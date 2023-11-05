@@ -5,6 +5,8 @@ db/
 CMakeLists.txt
 cmake-build-debug/
 out/
+.vs/
+.idea/
 # MacOS Cache
 .DS_Store
 
