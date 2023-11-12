@@ -4,7 +4,8 @@
 #include <memory>
 #include "controller/MyController.h"
 #include "controller/LoginController.h"
-
+#include "controller/ProductController.h"
+#include "controller/SellerController.h"
 
 void run()
 {
@@ -14,10 +15,14 @@ void run()
     OATPP_COMPONENT(std::shared_ptr<oatpp::web::server::HttpRouter>, router);
     auto my_controller = std::make_shared<MyController>();
     auto login_controller = std::make_shared<LoginController>();
+    auto product_controller = std::make_shared<ProductController>();
+    auto seller_controller = std::make_shared<SellerController>();
     /* Route GET - "/hello" requests to Handler */
     // router->route("GET", "/hello", std::make_shared<Handler_DTO>());
     router->addController(my_controller);
     router->addController(login_controller);
+    router->addController(product_controller);
+    router->addController(seller_controller);
     /* Get connection handler component */
     OATPP_COMPONENT(std::shared_ptr<oatpp::network::ConnectionHandler>, connectionHandler);
 

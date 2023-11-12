@@ -1,9 +1,9 @@
 //
-// Created by 电脑 on 2023/11/5.
+// Created by 电脑 on 2023/11/12.
 //
 
-#ifndef SHOPPING_MALL_PRODUCT_H
-#define SHOPPING_MALL_PRODUCT_H
+#ifndef SHOPPING_MALL_NEWPRODUCT_H
+#define SHOPPING_MALL_NEWPRODUCT_H
 
 #include <string>
 #include <oatpp/web/protocol/http/incoming/Request.hpp>
@@ -12,26 +12,14 @@
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 
-class Product :public oatpp::DTO{
-    DTO_INIT(Product, DTO);
+class NewProduct:public oatpp::DTO {
+    DTO_INIT(NewProduct, DTO);
     DTO_FIELD(String, Name);
     DTO_FIELD(String, Password);
     DTO_FIELD(String, ProductName);
+    DTO_FIELD(Float64 , Price);
 };
-
 
 #include OATPP_CODEGEN_END(DTO)
 
-struct ProductTable{
-    int ID;
-    std::string Name;
-    double Price;
-    int Quantity;
-    int Favorites;
-    int SellerID;
-};
-
-
-
-
-#endif //SHOPPING_MALL_PRODUCT_H
+#endif //SHOPPING_MALL_NEWPRODUCT_H

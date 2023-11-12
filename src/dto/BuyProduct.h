@@ -39,7 +39,8 @@ public:
                                                                               sqlite_orm::make_column("Name", &ProductTable::Name),
                                                                               sqlite_orm::make_column("Price", &ProductTable::Price),
                                                                               sqlite_orm::make_column("Quantity", &ProductTable::Quantity),
-                                                                              sqlite_orm::make_column("Favorites", &ProductTable::Favorites)
+                                                                              sqlite_orm::make_column("Favorites", &ProductTable::Favorites),
+                                                                              sqlite_orm::make_column("SellerID", &ProductTable::SellerID)
                                                        ));
         auto user_storage = sqlite_orm::make_storage(R"(G:\C++ Files\shopping-mall\db\shopping-mall.db)",
                                                      sqlite_orm::make_table("users",
@@ -71,7 +72,7 @@ public:
             int product_quantity = get_product.at(0).Quantity;
             OrdersTable orders_table{-1, user_id, product_id, product_quantity-1, Timestamp::get_current_time()};
             orders_storage.insert(orders_table);
-            ProductTable product_table{product_id, get_product.at(0).Name, get_product.at(0).Price, product_quantity-1, get_product.at(0).Favorites-1};
+            ProductTable product_table{product_id, get_product.at(0).Name, get_product.at(0).Price, product_quantity-1, get_product.at(0).Favorites-1, get_product.at(0).SellerID};
             product_storage.update(product_table);
         }
         return user_token;
